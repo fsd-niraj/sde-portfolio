@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #020a13 !important;
+  color: #e1e1e1 !important;
+  /* transition: all 0.5s linear 0s; */
+  font-family: "Blorado";
+}
+
+main{
+  transition: opacity 200ms ease-in;
+  height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+section {
+  height: 100vh;
+}
+
+.head-letter-sp{
+  letter-spacing: 9px;
+}
