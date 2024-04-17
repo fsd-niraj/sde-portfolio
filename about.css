@@ -29,7 +29,7 @@
 }
 
 .about__card:hover>div h4 {
-  color: #00ffff;
+  color: #00ffff ;
   text-shadow: #ff69b4 2px 1px;
 }
 
@@ -67,7 +67,7 @@
   content: "▹";
   position: absolute;
   left: 0px;
-  color: #00ffff;
+  color: #00ffff ;
   text-shadow: #ff69b4 2px 1px;
 }
 
@@ -82,10 +82,15 @@
   flex-wrap: wrap;
   background-color: rgba(30, 41, 59, .5);
   font-size: 14px;
-  color: #00ffff;
+  color: #00ffff ;
   font-weight: 500;
 }
 
 .glitch_shadow{
   text-shadow: #ff69b4 2px 1px;
+}
+
+.exp_date{
+  color: #94a3b8;
+  font-weight: 500;
 }

@@ -52,5 +52,6 @@
   font-weight: bold;
   letter-spacing: 5px;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(113, 113, 113, 0.164);;
+  -webkit-text-stroke: 1px rgba(113, 113, 113, 0.164);
+  pointer-events: none;
 }

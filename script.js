@@ -2,19 +2,6 @@ const NAME_HEAD = "i'm niraj panchal"
 const summary_content = "A software whiz with years of experience in Full Stack development. From crafting cool interfaces to coding powerful back - ends, I'm all about turning ideas into digital magic. Let's dive into the code together and create something awesome!";
 let ifFirstOccMouse = false;
 
-function mouseHoverGradient() {
-  const body = document.body;
-  const radGrdDiv = document.createElement('div');
-  radGrdDiv.id = 'gradient_bg_screen';
-  document.addEventListener('mousemove', (event) => {
-    const x = event.clientX;
-    const y = event.clientY;
-    const gradientValue = `radial-gradient(400px at ${x}px ${y}px, rgba(29, 78, 216, 0.15), transparent 90%)`;
-    radGrdDiv.style.background = gradientValue;
-  });
-  return body.appendChild(radGrdDiv)
-}
-
 function nameGlitchEffect() {
   const name_head = document.querySelectorAll("#name_head")
   name_head.forEach((item, index) => {
@@ -177,6 +164,9 @@ function dynamicBgText() {
     case "about":
       textSpace.textContent = "About"
       break;
+    case "experience":
+      textSpace.textContent = "Experience"
+      break;
     default:
       textSpace.textContent = "Portfolio"
       break;
@@ -189,6 +179,152 @@ function hideNavbar() {
 
 function showNavbar() {
   document.getElementsByTagName("header")[0].classList.remove('hidden');
+}
+
+const experienceContent = [
+  {
+    company: "Expertrons",
+    role: "Software Developer",
+    companyDescription: "Expertrons is the world's largest AI Videobot Technology platform, offering advanced communication, hiring, and placement solutions to businesses and educational institutions, along with edtech and career guidance services for individuals.",
+    techStack: ["MongoDB", "Express", "React", "Node"],
+    date: "2020 - 2022",
+    href: "https://www.expertrons.com/"
+  },
+  {
+    company: "Legends",
+    role: "POS Supervisor",
+    companyDescription: "Legends is a global premium experiences company that specializes in delivering holistic solutions for sports and entertainment organizations and venues",
+    techStack: ["POS", "Troubleshooting", "Networking"],
+    date: "2023 - Present",
+    href: "https://www.legends.net/"
+  },
+  {
+    company: "Camp K12",
+    role: "VFX Tutor Intern",
+    companyDescription: "Mumbai-based JBCN Education has been a pioneering organization in the field of education for over 3 decades",
+    techStack: ["Adobe Pr", "Adobe Ae", "DSLR"],
+    date: "2019 - 2020",
+    href: "https://campk12.com/us"
+  }
+];
+
+const skills = [
+  "Web",
+  "Android",
+  "iOS",
+  "Desktop",
+  "Database",
+  "DevOps"
+];
+
+const educationSection = [
+  {
+    title: "BCA (Bachelor's in Computer Applications)",
+    description: "BCA is an undergraduate degree program that provides students with a comprehensive understanding of computer applications and their practical implementation in various fields. It covers a wide range of topics including programming languages, database management, software development, networking, and web technologies. BCA equips students with the necessary skills and knowledge to pursue careers in software development, IT consulting, system analysis, and more.",
+    skills: ["Java", "C/C++", "Python", "MySQL" , "Oracle", "MongoDB"],
+    date: "2017 - 2020"
+  },
+  {
+    title: "Enterprise Software Development",
+    description: "Enterprise software development focuses on creating software applications tailored to meet the specific needs and requirements of large organizations or enterprises. It involves the development of complex, scalable, and mission-critical software solutions that integrate with existing systems and processes within an enterprise. Enterprise software developers typically work on projects such as customer relationship management (CRM), enterprise resource planning (ERP), supply chain management (SCM), and business intelligence (BI) systems.",
+    skills: ["RESTful","APIs", "SOAP", "Git"],
+    date: "2017 - 2020"
+  },
+  {
+    title: "Web Development",
+    description: "Web development encompasses the process of building and maintaining websites and web applications. It involves various aspects such as web design, front-end development, back-end development, and web server configuration. Web developers use programming languages such as HTML, CSS, and JavaScript for front-end development, and languages like PHP, Python, or Node.js for back-end development. Web development also includes tasks such as database integration, security implementation, and optimization for performance and user experience",
+    skills: ["HTML", "CSS", "Javascript", "Adobe suite"],
+    date: "2017 - 2020"
+  },
+]
+
+function loadContent(list = []) {
+  const allCards = document.getElementById("all_cards")
+
+  list.forEach((experience) => {
+    const link = document.createElement("a");
+    link.href = experience.href;
+    link.target = "_blank";
+    link.style.textDecoration = "none"
+    link.style.color = "inherit"
+    const aboutCard = document.createElement("div");
+    aboutCard.classList.add("about__card", "card__bg-anim", "row");
+
+    const dateDiv = document.createElement("div");
+    dateDiv.classList.add("col-md-3", "exp_date");
+    dateDiv.textContent = experience.date;
+
+    const infoDiv = document.createElement("div");
+    infoDiv.classList.add("col");
+    infoDiv.innerHTML = `
+      <h4 class="about__card-title">${experience.role} · ${experience.company}</h4>
+      <div class="my-3">${experience.companyDescription}</div>
+    `;
+
+    const techStackDiv = document.createElement("div");
+    techStackDiv.classList.add("row", "gap-3");
+    experience.techStack.forEach((tech) => {
+      const techDiv = document.createElement("div");
+      techDiv.classList.add("col", "chips");
+      techDiv.textContent = tech;
+      techStackDiv.appendChild(techDiv);
+    });
+
+    aboutCard.appendChild(dateDiv);
+    aboutCard.appendChild(infoDiv);
+    aboutCard.appendChild(techStackDiv);
+    link.appendChild(aboutCard);
+
+    allCards.appendChild(link);
+  });
+}
+
+function loadSkills(list = []) {
+  const about_skill = document.querySelectorAll("#about_skill");
+  about_skill.forEach((parent) => {
+    const ul = document.createElement("ul");
+    list.forEach((skill) => {
+      const listItem = document.createElement("li");
+      listItem.classList.add("code");
+      listItem.textContent = skill;
+
+      ul.appendChild(listItem)
+
+      parent.appendChild(ul);
+    });
+  })
+}
+
+function loadEduSection(list = []) {
+  const edu__section = document.getElementById('edu__section-wrapper');
+  list.forEach((card) => {
+    const eduCard = document.createElement("div");
+    eduCard.classList.add("edu__section-card")
+    const h4 = document.createElement("h4");
+    h4.classList.add("edu_card-title")
+    const span = document.createElement("span");
+    const descDiv = document.createElement("div");
+    const skillDiv = document.createElement("div");
+    h4.textContent = card.title
+    span.textContent = card.date
+    h4.appendChild(span)
+    descDiv.textContent = card.description;
+    skillDiv.classList.add("my-2", "row", "gap-2")
+    card.skills.forEach((s) => {
+      const chip = document.createElement("div");
+      chip.classList.add("chips", "col");
+      chip.textContent = s;
+      skillDiv.appendChild(chip)
+    })
+
+    eduCard.appendChild(h4)
+    eduCard.appendChild(descDiv)
+    if (card.skills) {
+      eduCard.appendChild(skillDiv)
+    }
+
+    edu__section.appendChild(eduCard);
+  })
 }
 
 window.addEventListener('popstate', function () {
@@ -213,11 +349,13 @@ document.addEventListener('mousemove', function (event) {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-  // mouseHoverGradient()
   dynamicBgText();
   animateProfileImg()
   scrollSections()
   aboutSecOpacity()
+  loadContent(experienceContent)
+  loadSkills(skills)
+  loadEduSection(educationSection)
   glitchAnimation('name_head', 'h1', NAME_HEAD);
   typewritterAnimation('home_summary', summary_content, 10);
   setTimeout(function () {

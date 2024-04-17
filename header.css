@@ -37,7 +37,7 @@ header ul li a {
 
 header ul li a:hover{
   color: #ffffff;
-  text-shadow: #00ffff .5px .5px;
+  text-shadow: #00ffff  .5px .5px;
 }
 
 .hidden {
