@@ -1,37 +1,88 @@
-.edu__section-wrapper{
+.edu__section-wrapper {
   counter-reset: section 0;
 }
 
-.edu__section-card{
+.edu__section-card {
   margin-bottom: 50px;
   box-sizing: border-box;
   transition: all 200ms ease-in;
+  margin: 40px;
 }
 
-.edu_card-title{
+.edu_card-title {
   font-size: 2rem;
   font-weight: bold;
-  position: relative;
 }
 
-.edu_card-title span{
+.edu_card-title span {
+  position: relative;
   font-size: 1.5rem;
   font-weight: normal;
   opacity: .8;
   margin-left: 10px;
+  font-family: monospace;
 }
 
-.edu_card-title::after{
+.edu_card-title::before {
+  content: "0" counter(section) ".";
+  counter-increment: section 1;
+  margin-right: 10px;
+  font-size: 28px;
+  font-family: monospace;
+}
+
+.edu_card-title span::after {
   content: "";
   position: absolute;
   top: 50%;
   margin-left: 20px;
   height: 1px;
-  width: 300px;
+  /* width: 150px; */
+  box-sizing: border-box;
   background-color: #94a3b88a;
 }
 
-.edu__section-card:hover > .edu_card-title{
-  color: #00ffff ;
+.edu__section-card:hover>.edu_card-title {
+  color: #00ffff;
   text-shadow: #ff69b4 2px 1px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  box-sizing: border-box;
+}
+
+thead tr {
+  border-bottom: 1px solid #94a3b868;
+}
+tbody tr {
+  border-bottom: 1px solid #94a3b868;
+}
+
+table a{
+  text-decoration: none;
+  color: inherit;
+}
+
+table a:hover{
+  color: #94a3b8;
+}
+
+table ul{
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project_title{
+  font-weight: 500;
+  color: #94a3b8;
 }

@@ -221,13 +221,13 @@ const educationSection = [
   {
     title: "BCA (Bachelor's in Computer Applications)",
     description: "BCA is an undergraduate degree program that provides students with a comprehensive understanding of computer applications and their practical implementation in various fields. It covers a wide range of topics including programming languages, database management, software development, networking, and web technologies. BCA equips students with the necessary skills and knowledge to pursue careers in software development, IT consulting, system analysis, and more.",
-    skills: ["Java", "C/C++", "Python", "MySQL" , "Oracle", "MongoDB"],
+    skills: ["Java", "C/C++", "Python", "MySQL", "Oracle", "MongoDB"],
     date: "2017 - 2020"
   },
   {
     title: "Enterprise Software Development",
     description: "Enterprise software development focuses on creating software applications tailored to meet the specific needs and requirements of large organizations or enterprises. It involves the development of complex, scalable, and mission-critical software solutions that integrate with existing systems and processes within an enterprise. Enterprise software developers typically work on projects such as customer relationship management (CRM), enterprise resource planning (ERP), supply chain management (SCM), and business intelligence (BI) systems.",
-    skills: ["RESTful","APIs", "SOAP", "Git"],
+    skills: ["RESTful", "APIs", "SOAP", "Git"],
     date: "2017 - 2020"
   },
   {
@@ -236,6 +236,51 @@ const educationSection = [
     skills: ["HTML", "CSS", "Javascript", "Adobe suite"],
     date: "2017 - 2020"
   },
+];
+
+const projectContent = [
+  {
+    title: "Cash Mate",
+    description: "Architected a comprehensive full-stack web application named 'POStify,' proficiently equipped to handle rapid order processing, secure payment transactions, workforce management, inventory control, and an array of essential business functionalities.",
+    href: "https://github.com/fsd-niraj/cashMate",
+    platform: ["Web"],
+    createdAt: "Personal"
+  },
+  {
+    title: "NFT App",
+    description: "A mobile app for browsing and checking details on NFTs",
+    href: "https://github.com/fsd-niraj/nft_app",
+    platform: ["Mobile", "Android", "iOS"],
+    createdAt: "Personal"
+  },
+  {
+    title: "Android Map Marker",
+    description: "Description for Project 3",
+    href: "https://github.com/fsd-niraj/Android-Map-Marker",
+    platform: ["Android"],
+    createdAt: "Humber ESDV"
+  },
+  {
+    title: "Mars Image Viewer App",
+    description: "An iOS app to view Mars Images with filtered Rovers & Date",
+    href: "https://github.com/fsd-niraj/mars-image-viewer",
+    platform: ["iOS"],
+    createdAt: "Humber ESDV"
+  },
+  {
+    title: "Quis App",
+    description: "An iOS app to view Mars Images with filtered Rovers & Date",
+    href: "https://github.com/fsd-niraj/QuizApp",
+    platform: ["iOS"],
+    createdAt: "Humber ESDV"
+  },
+  {
+    title: "Todo App",
+    description: "An iOS ToDo app to mark down your daily checklist.",
+    href: "https://github.com/fsd-niraj/ToDo-App",
+    platform: ["iOS"],
+    createdAt: "Humber ESDV"
+  }
 ]
 
 function loadContent(list = []) {
@@ -327,6 +372,42 @@ function loadEduSection(list = []) {
   })
 }
 
+function projectSectionContent(list = []) {
+  const tableBody = document.getElementById('table-body');
+
+  list.forEach(project => {
+    const row = document.createElement('tr');
+
+    const titleCell = document.createElement('td');
+    titleCell.classList.add("project_title")
+    titleCell.textContent = project.title;
+    row.appendChild(titleCell);
+
+    const descriptionCell = document.createElement('td');
+    descriptionCell.textContent = project.createdAt;
+    row.appendChild(descriptionCell);
+    const platFormList = document.createElement('ul');
+    project.platform.forEach((d) => {
+      console.log(d)
+      const platformCell = document.createElement('td');
+      console.log(project.platform)
+      platformCell.innerHTML = `<div class="chips" style="padding: 6px 10px">${d}</div>`;
+      platFormList.appendChild(platformCell)
+    })
+    row.appendChild(platFormList);
+
+    const linkCell = document.createElement('td');
+    const link = document.createElement('a');
+    link.textContent = project.href;
+    link.href = project.href;
+    link.target = "_blank";
+    linkCell.appendChild(link);
+    row.appendChild(linkCell);
+
+    tableBody.appendChild(row);
+  });
+}
+
 window.addEventListener('popstate', function () {
   getUrlRoute();
   dynamicBgText();
@@ -356,6 +437,7 @@ document.addEventListener('DOMContentLoaded', function () {
   loadContent(experienceContent)
   loadSkills(skills)
   loadEduSection(educationSection)
+  projectSectionContent(projectContent)
   glitchAnimation('name_head', 'h1', NAME_HEAD);
   typewritterAnimation('home_summary', summary_content, 10);
   setTimeout(function () {
